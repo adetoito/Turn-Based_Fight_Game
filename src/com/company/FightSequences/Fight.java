@@ -34,13 +34,17 @@ public class Fight {
         boolean inFight = true;
         while (inFight) {
             String action = selectChoice.decision();
+            int enemyAttacked = -1;
+            int itemUsed = -1;
             if (action.equals("attack")) {
                 int [] s1HPs = new int [SmallSlime.length]; int [] s1HPCapacities = new int [SmallSlime.length];
                 for (int i = 0; i < s1HPs.length; i++) {
                     s1HPs[i] = SmallSlime[i].getHP();
                     s1HPCapacities[i] = SmallSlime[i].getHPCapacity();
                 }
-                attackMenu.chooseEnemy(enemyIDs, idSum, s1HPs, s1HPCapacities);
+                enemyAttacked = attackMenu.chooseEnemy(enemyIDs, idSum, s1HPs, s1HPCapacities);
+
+                
             } else if (action.equals("abilities")) {
 
             } else if (action.equals("items")) {
