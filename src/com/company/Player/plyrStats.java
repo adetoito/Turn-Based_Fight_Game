@@ -99,6 +99,68 @@ public class plyrStats {
 
     //
     //
+    // ABILITIES
+    //
+    //
+
+    public String [] abilities = {"Research"};
+    public int [] energyUsage = {1};
+
+    public boolean ableToUseAbility (int a) {
+        boolean b = true;
+        if (Level >= 1) {
+            abilities[0] = "Research";
+            energyUsage[0] = 1;
+        } else if (Level >= 4) {
+            abilities[1];
+        } else if (Level >= 9) {
+            abilities[2];
+        } else if (Level >= 17) {
+            abilities[3];
+        } else if (Level >= 26) {
+            abilities[4];
+        } else if (Level >= 38) {
+            abilities[5];
+        } else if (Level >= 49) {
+            abilities[6];
+        } else if (Level >= 62) {
+            abilities[7];
+        } else {
+            b = false;
+        }
+        return b;
+    }
+
+    public String [] getAbilities () {
+        if (Level >= 1) {
+            String [] plyrAbilities = {abilities[0]};
+            return plyrAbilities;
+        } else if (Level >= 4) {
+
+        } else if (Level >= 9) {
+
+        } else if (Level >= 17) {
+
+        } else if (Level >= 26) {
+
+        } else if (Level >= 38) {
+
+        } else if (Level >= 49) {
+
+        } else if (Level >= 62) {
+
+        }
+    }
+
+    public void displayAbilities () {
+        String [] plyrAbilities = getAbilities();
+        for (int i = 0; i < plyrAbilities.length; i++) {
+            System.out.println("(" + (i + 1) + ") " + plyrAbilities[i]);
+        }
+    }
+
+    //
+    //
     // IN-FIGHT METHODS
     //
     //

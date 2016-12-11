@@ -25,27 +25,40 @@ public class Fight {
         }
     }
 
-    public boolean startFight (plyrStats ps) {
+    public boolean startFight (plyrStats Player) {
         if (SmallSlime.length == 1) {
             System.out.println("1 Small Slime appeared!");
         } else {
             System.out.println(SmallSlime.length + " Small Slimes appeared!");
         }
         boolean inFight = true;
+        boolean winOrLose = false;
         while (inFight) {
             String action = selectChoice.decision();
             int enemyAttacked = -1;
+            int abilityUsed = -1;
             int itemUsed = -1;
+            boolean defended = false;
+
+            // CHOOSE ACTION
             if (action.equals("attack")) {
                 int [] s1HPs = new int [SmallSlime.length]; int [] s1HPCapacities = new int [SmallSlime.length];
                 for (int i = 0; i < s1HPs.length; i++) {
                     s1HPs[i] = SmallSlime[i].getHP();
                     s1HPCapacities[i] = SmallSlime[i].getHPCapacity();
                 }
+
                 enemyAttacked = attackMenu.chooseEnemy(enemyIDs, idSum, s1HPs, s1HPCapacities);
 
-                
             } else if (action.equals("abilities")) {
+                int [] s1HPs = new int [SmallSlime.length]; int [] s1HPCapacities = new int [SmallSlime.length];
+                for (int i = 0; i < s1HPs.length; i++) {
+                    s1HPs[i] = SmallSlime[i].getHP();
+                    s1HPCapacities[i] = SmallSlime[i].getHPCapacity();
+                }
+
+                int [] actionAbilities = abilitiesMenu.chooseAbility(enemyIDs, idSum, s1HPs, s1HPCapacities, Player.getAbilities());
+                abilityUsed = actionAbilities[0]; enemyAttacked = actionAbilities[1];
 
             } else if (action.equals("items")) {
 
@@ -53,11 +66,15 @@ public class Fight {
 
             }
 
-            if (ps.amtHP <= 0) {
-                return false;
+            // SPEED EVENT AND ACTIONS
+
+            // WIN OR LOSE CONDITIONS
+            if (Player.amtHP <= 0) {
+                winOrLose = false;
+                break;
             }
         }
-            return false;
+            return winOrLose;
         }
     }
 
