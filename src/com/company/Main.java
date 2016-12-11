@@ -3,6 +3,7 @@ package com.company;
 import com.company.FightSequences.Fight;
 import com.company.Player.plyrStats;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
@@ -11,11 +12,10 @@ public class Main {
     ================================
               TOWER SCOUR
     ================================
-    \*
-                           */
+    \*                            */
 
     // GAME LOOP
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         plyrStats Player = new plyrStats(20);
 
         Scanner sc = new Scanner(System.in);
